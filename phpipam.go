@@ -1,6 +1,7 @@
 package phpipam
 
 import (
+	"crypto/tls"
 	"io/ioutil"
 	"net/http"
 )
@@ -25,7 +26,11 @@ func New(hostname string, application string, username string, password string) 
 
 func (c *Client) Do(req *http.Request) ([]byte, error) {
 	var body []byte
-	client := &http.Client{}
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	}
+
+	client := &http.Client{Transport: tr}
 	req.Header.Add("token", c.Token)
 	resp, err := client.Do(req)
 	if err != nil {

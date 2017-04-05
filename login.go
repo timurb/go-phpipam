@@ -1,6 +1,7 @@
 package phpipam
 
 import (
+	"crypto/tls"
 	"encoding/json"
 	"errors"
 	"io/ioutil"
@@ -20,7 +21,11 @@ type Login struct {
 
 func NewLogin(server_url string, application string, username string, password string) (*Login, error) {
 	var loginData = new(Login)
-	client := &http.Client{}
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	}
+
+	client := &http.Client{Transport: tr}
 	req, _ := http.NewRequest("POST", "https://"+server_url+"/api/"+application+"/user/", nil)
 	req.SetBasicAuth(username, password)
 	resp, err := client.Do(req)
