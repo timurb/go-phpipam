@@ -9,7 +9,7 @@ import (
 
 type Address struct {
 	Code    int  `json:"code"`
-	Success bool `json:"success"`
+	Success interface{} `json:"success"`
 	Data    struct {
 		Id       string `json:"id"`
 		SubnetId string `json:"subnetId"`
@@ -21,7 +21,7 @@ type Address struct {
 
 type AddressSearch struct {
 	Code    int  `json:"code"`
-	Success bool `json:"success"`
+	Success interface{} `json:"success"`
 	Data    []struct {
 		Id          string `json:"id"`
 		SubnetId    string `json:"subnetId"`
@@ -33,7 +33,7 @@ type AddressSearch struct {
 
 type AddressPing struct {
 	Code    int  `json:"code"`
-	Success bool `json:"success"`
+	Success interface{} `json:"success"`
 	Data    struct {
 		ScanType string `json:"scan_type"`
 		ExitCode int    `json:"exit_code"`
@@ -43,20 +43,20 @@ type AddressPing struct {
 
 type AddressDelete struct {
 	Code    int    `json:"code"`
-	Success bool   `json:"success"`
+	Success interface{}   `json:"success"`
 	Message string `json:"message"`
 }
 
 type AddressFirstFree struct {
 	Code    int    `json:"code"`
-	Success bool   `json:"success"`
+	Success interface{}   `json:"success"`
 	Message string `json:"message"`
 	Ip      string `json:"ip"`
 }
 
 type AddressSearchIp struct {
 	Code    int  `json:"code"`
-	Success bool `json:"success"`
+	Success interface{} `json:"success"`
 	Data    []struct {
 		Id       string `json:"id"`
 		SubnetId string `json:"subnetId"`
@@ -68,7 +68,7 @@ type AddressSearchIp struct {
 
 type UpdateAddress struct {
 	Code    int    `json:"code"`
-	Success bool   `json:"success"`
+	Success interface{}   `json:"success"`
 	Message string `json:"message"`
 }
 
