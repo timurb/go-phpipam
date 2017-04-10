@@ -51,7 +51,8 @@ type AddressFirstFree struct {
 	Code    int    `json:"code"`
 	Success interface{}   `json:"success"`
 	Message string `json:"message"`
-	Ip      string `json:"ip"`
+	Id	string `json:"id"`
+	Data	string `json:"data"`
 }
 
 type AddressSearchIp struct {
